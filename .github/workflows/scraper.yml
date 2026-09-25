@@ -36,14 +36,14 @@ jobs:
         run: python scraper_youtube.py
 
       - name: Notifikasi Telegram kalau Google Trends gagal
-        if: steps.scrape_google.outcome == 'failure'
+        if: always() && steps.scrape_google.outcome == 'failure'
         run: |
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
             -d text="⚠️ Scraper Google Trends GAGAL jalan. Cek log di GitHub Actions: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
       - name: Notifikasi Telegram kalau YouTube gagal
-        if: steps.scrape_youtube.outcome == 'failure'
+        if: always() && steps.scrape_youtube.outcome == 'failure'
         run: |
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
