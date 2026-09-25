@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0F1420;
+  --card: #161D2E;
+  --card-hover: #1B233A;
+  --accent: #7DD3C0;
+  --text: #E8EAF0;
+  --text-dim: #8890A6;
+  --border: #242C42;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
